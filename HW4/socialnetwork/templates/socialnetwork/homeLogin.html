@@ -1,0 +1,35 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Private Todo List -- Login</title>
+</head>
+
+<body>
+    
+
+    <p>
+        Please login to view the Social Network
+    </p>
+
+    <form method="post" action="login">
+        <table> 
+        <tr>
+            <td><label for="id_username">Username:</label></td>
+            <td><input id="id_username" maxlength="254" name="username" type="text" /></td>
+        </tr>
+        <tr>
+            <td><label for="id_password">Password:</label></td>
+            <td><input id="id_password" name="password" type="password" /></td>
+        </tr>
+        </table>
+        
+        <input type="submit" value="Login" />
+         {% csrf_token %}
+    </form>
+    <p> First time here? <a href="regNewUser">Register</a> now! </p>
+        <input type="hidden" name="next" value="regNewUser" />
+</body>
+</html>
+
