@@ -1,0 +1,86 @@
+{% extends "regTheaterLocator/base.html" %}
+{% block title %}
+
+    {{title}}
+        
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="{% url 'createProd' %}">
+        <div class="input-field col s12">
+                <label for="place">Show Name</label>
+                <input type="text" value="{{form.show_name.value}}" name="show_name">
+        </div>
+        <div class="row">
+        <div class="card-panel col s3">
+        <div class="row">
+            <label>Opening night</label> 
+            <input type="text" class="datepicker"  value="{{form.opens.value}}" id="opens">
+            
+        </div>
+        <div class="row">
+            <label>Closing night</label> 
+            <input type="text" class="datepicker"  value="{{form.closes.value}}" id="closes">
+            
+        </div>
+        </div>
+        </div>
+        <button class="btn waves-effect waves-light " type="submit">Save 
+            <i class="mdi-content-save right tiny"></i>
+        </button>
+        {% csrf_token %}
+
+        <input type="hidden" name="theater" value="{{theater.id}}"/>
+        <input type="hidden" name="opens" id="opensNight"/>
+        <input type="hidden" name="closes" id="closesNight"/>
+        </form>
+        
+        
+                
+{% endblock %}
+
+{% block scriptss %}
+
+    <script>
+    $(document).ready(function() {
+        $('select').material_select();
+        
+    });
+    var $input = $('#opens').pickadate({
+        selectMonths: true,// Creates a dropdown to control month
+        selectYears: 2, // Creates a dropdown of 15 years to control year
+        
+    });
+    
+    var $inputt = $('#closes').pickadate({
+        selectMonths: true,// Creates a dropdown to control month
+        selectYears: 2, // Creates a dropdown of 15 years to control year
+    
+    });
+    
+    var opicker = $input.pickadate('picker');
+        opener= document.getElementById("opensNight");
+        cpicker = $inputt.pickadate('picker');
+        closer= document.getElementById("closesNight");
+    
+    opicker.on({
+        close:function() {
+            opener.value = opicker.get('select', 'yyyy/mm/dd')
+            
+        }
+    })
+    
+     cpicker.on({
+        close:function() {
+            closer.value = cpicker.get('select', 'yyyy/mm/dd')
+            console.log(closer.value)
+        }
+    })
+        
+    
+    
+    
+    </script>
+
+{% endblock %}     

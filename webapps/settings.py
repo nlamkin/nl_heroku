@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '26+&sc!z^wv1lb1z1%fci#ab7+vsu92q75355^#dtcqu9o#*v6'
+SECRET_KEY = 'le@q5q&0goq5sts2vm3fi6ilhk*xo^3yb93ae%4ktrqz=7x@x('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -26,6 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DATE_INPUT_FORMATS = [ '%Y/%m/%d' ]
 
 # Application definition
 
@@ -36,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'socialnetwork'
+    'regTheaterLocator'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,12 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-# Used by the authentication system for the private-todo-list application.
-# URL to use if the authentication system requires a user to log in.
-LOGIN_URL = '/login/'
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/index'
 
-# Default URL to redirect to after a user logs in.
-LOGIN_REDIRECT_URL = '/stream/'
 
 ROOT_URLCONF = 'webapps.urls'
 
@@ -66,8 +64,13 @@ WSGI_APPLICATION = 'webapps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'regtheaterlocator',                      # Or path to database file if using sqlite3.
+            # The following settings are not used with sqlite3:
+            'USER': 'postgres',
+            'PASSWORD': 'frogroku',
+            'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
+            'PORT': '5432',                      # Set to empty string for default.
     }
 }
 

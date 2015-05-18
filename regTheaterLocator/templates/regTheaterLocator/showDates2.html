@@ -1,0 +1,56 @@
+{% extends "regTheaterLocator/base.html" %}
+
+{% block content %}
+    
+    <form action="#">
+    
+    <h5>Shows for the week of </h5>
+    <label for="date">Sunday</label> 
+    <input type="date" class="datepicker" name="date" value="{{date}}" id="weekOf">
+    
+    
+    <p>
+        <input  type="checkbox" id="mon" name="mon"/>
+        <label class="dateBoxes" for="mon"> Mon </label>
+    <br>
+        <input  type="checkbox" id="tue" name="tue"/>
+        <label class="dateBoxes" for="tue"> Tue </label>
+    <br>
+        <input  type="checkbox" id="wed" name="wed"/>
+        <label class="dateBoxes" for="wed"> Wed </label>
+    <br>
+        <input  type="checkbox" id="thu" name="thu"/>
+        <label class="dateBoxes" for="thu"> Thu </label>
+    <br>
+        <input  type="checkbox" id="fri" name="fri"/>
+        <label class="dateBoxes" for="fri"> Fri </label>
+    <br>
+        <input  type="checkbox" id="sat" name="sat"/>
+        <label class="dateBoxes" for="sat"> Sat </label>
+    <br>
+        <input  type="checkbox" id="sun" name="sun"/>
+        <label class="dateBoxes" for="sun"> Sun </label>
+    </p>
+   
+  </form>
+
+  
+{% endblock %}
+
+{% block scriptss %}
+
+
+    <script>
+    $( document ).ready(function() {
+      
+    $('select').material_select();
+  });
+  
+  
+  
+   $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 2 // Creates a dropdown of 15 years to control year
+  });
+  </script>
+{% endblock %}     

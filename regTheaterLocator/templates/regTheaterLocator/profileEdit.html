@@ -1,0 +1,75 @@
+{% extends "regTheaterLocator/base.html" %}
+{% block title %}
+
+    {{title}}
+        
+{% endblock %}
+
+{% block content %}
+        <form method="POST" action="{% url 'editProfile' theater.id %}">
+        <div class="input-field col s12">
+                <label for="place">Name</label> 
+                {{form.name}}
+        </div>
+        <div class="row">
+        <div class="card-panel col s3">
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="place">Address</label> 
+                <input type="text" value="{{form.address.value}}" name="address">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s8">
+                <label for="place">City</label> 
+                <input type="text" value="{{form.city.value}}" name="city">
+            </div>
+            <div class="input-field col s4">
+                <label for="place">State</label> 
+                <input type="text" value="{{form.state.value}}" name="state">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="place">Zip Code</label> 
+                <input type="text" value="{{form.zip_code.value}}" name="zip_code">
+            </div>
+        </div>
+        </div>
+        </div>
+        
+        <button class="btn waves-effect waves-light " type="submit">Save 
+            <i class="mdi-content-save right tiny"></i>
+        </button>
+        {% csrf_token %}
+
+        <input type="hidden" value='{{theater}}' name='theater'>
+        </form>
+        
+
+        <h3 class="header">Current Shows</h3>
+        <div class="row">
+            {% for show in productions %}
+                <div class="card-panel col s4">
+                    <div class="center-align">
+                        <p> {{show.show_name}}<p>
+                        <a class="btn-floating btn-tiny waves-effect waves-light teal"><i class="mdi-editor-border-color tiny"></i></a>
+                    </div>
+                </div>
+            {% endfor %}
+            
+        <form method="GET" action="{% url 'createProd' %}" id="add">
+        </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light " type="submit" form="add">Add Production
+                <i class="mdi-action-note-add right tiny"></i>
+            </button>
+        </div>
+        <input type="hidden" name="theater" value="{{theater.id}}"/>
+        </form>
+{% endblock %}
+
+{% block scriptss %}
+
+{% endblock %}     

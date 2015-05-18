@@ -1,0 +1,42 @@
+{% extends "regTheaterLocator/base.html" %}
+{% block title %}
+
+    THE LIST PAGE WORKS
+        
+{% endblock %}
+
+{% block content %}
+        
+        <h2 class="header">Find a show</h2>
+        
+        <div class="row">
+        <h4 class="col s6"> When? </h4>
+        </div>
+        <form method="get" action="results">
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="place">City</label> 
+                    <input type="text" name="city" value="{{city}}">
+                </div>
+                <div class="input-field col s6">
+                    <label for="date">Date</label> 
+                    <input type="date" class="multiDatesPicker" name="date" value="{{date}}">
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">search
+                <i class="mdi-content-send right"></i>
+            </button>
+        </form>
+{% endblock %}
+
+{% block scriptss %}
+    <script type="text/javascript" src="../../static/regTheaterLocator/js/jquery-ui-1.11.1.js"></script>
+    <script>
+    $( document ).ready(function() {
+      
+    $('select').material_select();
+  });
+  $('#simpliest-usage').multiDatesPicker();
+  </script>
+{% endblock %}     
+

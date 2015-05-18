@@ -1,0 +1,146 @@
+{% extends "regTheaterLocator/base.html" %}
+
+{% block content %}
+    
+
+    
+    <h5>Shows for the week of </h5>
+    <label for="date">Sunday</label> 
+    <input type="date" class="datepicker" name="date" id="weekOf">
+    
+    
+    <div class="row">
+        <div class="col s1">
+            <input  class="dateBoxes" type="checkbox" id="sun" name="sun"/>
+            <label  for="sun"> Sun </label>
+        </div>
+        <div class="col s2 offset-s1">
+            <input readonly type="text" id="sunday">
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col s1">
+        <input class="dateBoxes" type="checkbox" id="mon" name="mon"/>
+        <label  for="mon"> Mon </label>
+        </div> 
+        <div class="col s2 offset-s1">
+            <input readonly type="text" id="monday">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s1">
+            <input class="dateBoxes" type="checkbox" id="tue" name="tue"/>
+            <label  for="tue"> Tue </label>
+        </div>
+        <div class="col s2 offset-s1">
+            <input readonly type="text" id="tuesday">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s1">
+            <input class="dateBoxes" type="checkbox" id="wed" name="wed"/>
+            <label  for="wed"> Wed </label>
+        </div>
+        <div class="col s2 offset-s1">
+            <input readonly type="text" id="wednesday">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col s1">
+            <input class="dateBoxes" type="checkbox" id="thu" name="thu"/>
+            <label  for="thu"> Thu </label>
+        </div>
+        <div class="col s2 offset-s1">
+            <input readonly type="text" id="thursday">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s1">
+            <input class="dateBoxes"  type="checkbox" id="fri" name="fri"/>
+            <label for="fri"> Fri </label>
+        </div>
+        <div class="col s2 offset-s1">
+            <input readonly type="text" id="friday">
+        </div>
+   </div>
+    <div class="row">
+        <div class="col s1">
+            <input class="dateBoxes" type="checkbox" id="sat" name="sat"/>
+            <label  for="sat"> Sat </label>
+        </div>
+        <div class="col s2 offset-s1">
+            <input readonly type="text" id="saturday">
+        </div>
+    <div>
+    
+    <form method="POST" action="{% url 'manageShow' %}">
+    
+    </form>
+
+  
+{% endblock %}
+
+{% block scriptss %}
+
+
+    <script>
+    $( document ).ready(function() { 
+        $('select').material_select();
+    });
+    var $input = $('.datepicker').pickadate({
+        selectMonths: true,// Creates a dropdown to control month
+        selectYears: 2, // Creates a dropdown of 15 years to control year
+        disable: [2,3,4,5,6,7]
+    });
+    var picker = $input.pickadate('picker');
+        weekOf = new Date();
+        mon = new Date();
+        tues = new Date();
+        wed = new Date();
+        thur = new Date();
+        fri = new Date();
+        sat = new Date();
+        
+    picker.on({
+        close:function() {
+            console.log('CLOSED')
+            weekOf = picker.get('select').obj;
+            mon.setTime(weekOf.getTime() + 86400000);
+            tues.setTime(mon.getTime() + 86400000);
+            wed.setTime(tues.getTime() + 86400000);
+            thur.setTime(wed.getTime() + 86400000);
+            fri.setTime(thur.getTime() + 86400000);
+            sat.setTime(fri.getTime() + 86400000);
+            
+            var monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            
+            document.getElementById("sunday").value = ("" + weekOf.getDate() + " " +  
+                monthNames[weekOf.getMonth()] + ", " + weekOf.getFullYear());
+                
+            document.getElementById("monday").value = ("" + mon.getDate() + " " +  
+                monthNames[mon.getMonth()] + ", " + mon.getFullYear());
+                
+            document.getElementById("tuesday").value = ("" + tues.getDate() + " " +  
+                monthNames[tues.getMonth()] + ", " + tues.getFullYear());
+            
+            document.getElementById("wednesday").value = ("" + wed.getDate() + " " +  
+                monthNames[wed.getMonth()] + ", " + wed.getFullYear());
+                
+            document.getElementById("thursday").value = ("" + thur.getDate() + " " +  
+                monthNames[thur.getMonth()] + ", " + thur.getFullYear());
+                
+            document.getElementById("friday").value = ("" + fri.getDate() + " " +  
+                monthNames[fri.getMonth()] + ", " + fri.getFullYear());
+                
+            document.getElementById("saturday").value = ("" + sat.getDate() + " " +  
+                monthNames[sat.getMonth()] + ", " + sat.getFullYear());
+        }
+    })
+    
+    
+    
+  </script>
+{% endblock %}     

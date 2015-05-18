@@ -1,0 +1,54 @@
+{% extends "regTheaterLocator/base.html" %}
+{% block title %}
+
+    Search for shows
+        
+{% endblock %}
+
+{% block content %}
+        
+        <h2 class="header">{{theaterName}}</h2>
+
+        <div class="row">
+        <div class="card-panel col s3">
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="place">Address</label> 
+                <input readonly type="text" value="{{address}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s8">
+                <label for="place">City</label> 
+                <input readonly type="text" value="{{city}}">
+            </div>
+            <div class="input-field col s4">
+                <label for="place">State</label> 
+                <input readonly type="text" value="{{state}}">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="place">Zip Code</label> 
+                <input readonly type="text" value="{{zip_code}}">
+            </div>
+        </div>
+        </div>
+        </div>
+        
+
+        <h3 class="header">Current Shows</h3>
+        <div class="row">
+            {% for show in productions %}
+                <div class="card-panel col s4">
+                <p> {{show.show_name}}<p>
+            {% endfor %}
+        </div>
+
+        
+{% endblock %}
+
+{% block scriptss %}
+
+{% endblock %}     

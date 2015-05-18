@@ -1,0 +1,90 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="../../static/regTheaterLocator/css/materialize.min.css"  media="screen,projection"/>
+      <link href="../../static/regTheaterLocator/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+      <link href="../../static/regTheaterLocator/css/content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        
+        <style>
+            .dateBoxes {
+            float:left;
+            }
+        </style>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+      <title> {% block title %} {% endblock %} </title>
+	</head>
+
+    <body>
+        
+        <nav class="top-nav teal lighten-2">
+            <ul class="right">
+                 <li>
+                     <div> <a href="/manage" class="white-text" >Manage Theaters</a></div>
+                </li>
+                <li> <p>{{user.username}}<p> 
+                    <div> <a href="/logout" class="blue-text">Logout</a></div>
+                </li>
+                
+            </ul>
+        </nav>
+        
+        <ul class="side-nav fixed  teal darken-2">
+            <div class="card-panel teal darken-4">
+            
+            </div>
+            <li><a href="/list" class="white-text"><i class="small mdi-action-event"></i>  Find a Show</a> <li>
+            <li><a href="/search" class="white-text"><i class="small mdi-action-search"></i>  Search Theaters </a> <li> 
+        </ul>
+        <div class="container ">
+        {% if message %}
+	        <div class="message">
+	            {{message}}
+	        </div>
+	    {% endif %}
+            <div class="row">
+                <div class="col s3">
+                    <div>
+                    
+                    <!-- side bar  -->
+                    </div>
+                </div>
+
+                <div class="col s9">
+                    <!-- Teal page content  -->
+                    <main>
+                     <div class="content">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    </main>
+                </div>
+             </div>
+        </div>
+    
+	    <div class="user-info">
+    
+
+			
+	    </div>
+
+	    <div class="search-bar">
+			{% block search-bar %}
+			{% endblock %}
+		</div>
+
+	    
+
+	   
+	
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="../../static/regTheaterLocator/js/materialize.min.js"></script>
+      <div class="scriptss">
+        {% block scriptss %}
+		{% endblock %}
+      </div>
+    </body>
+  </html>
+        

@@ -1,0 +1,34 @@
+{% extends "regTheaterLocator/base.html" %}
+
+{% block title %}
+
+    Search
+        
+{% endblock %}
+
+{% block content %}
+        
+        <h2 class="header">Search For Theaters</h2>
+        
+        <div class="row">
+        <h4 class="col s6"> By Name </h4> 
+        <h4 class="col s6"> By City </h4>
+        </div>
+        <form method="get" action="search">
+        <div class="row">
+            <div class="input-field col s6">
+                <label for="place">Name</label> 
+                <input type="text" name="theaterName" value="{{theaterName}}">
+            </div>
+            <div class="input-field col s6">
+                <label for="place">City</label> 
+                <input type="text" name="city" value="{{city}}">
+            </div>
+        </div>
+        
+        <button class="btn waves-effect waves-light" type="submit" name="action">search
+            <i class="mdi-content-send right"></i>
+        </button>
+        </form>
+{% endblock %}
+

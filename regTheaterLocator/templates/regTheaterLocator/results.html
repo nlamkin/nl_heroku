@@ -1,0 +1,23 @@
+{% extends "regTheaterLocator/base.html" %}
+{% block title %}
+
+    Search for shows
+        
+{% endblock %}
+
+{% block content %}
+        
+        <h3 class="header">Current Shows</h3>
+        <div class="row">
+            {% for show in productions %}
+                <div class="card-panel col s4">
+                <p> {{show.show_name}}<p>
+            {% endfor %}
+        </div>
+
+        
+{% endblock %}
+
+{% block scriptss %}
+
+{% endblock %}     

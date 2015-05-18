@@ -1,0 +1,33 @@
+{% extends "addrbook/search.html" %}
+
+{% block content %}
+    <table>
+    {% for field in form %}
+        <tr>
+            <td>{{field.label}}:</td>
+            <td>{{field.value}}</td>
+        </tr>
+    {% endfor %}
+    <tr>
+        <td>Created:</td>
+        <td>{{creation_time}} (by {{created_by.first_name}} {{created_by.last_name}})</td>
+    </tr>
+    <tr>
+        <td>Last Updated:</td>
+        <td>{{update_time}} (by {{updated_by}})</td>
+    </tr>
+    <tr>
+        <td>
+            <form action="/addrbook/edit/{{id}}" method="get">
+                <input type="submit" value="Edit">
+            </form>
+        </td>
+        <td>
+            <form action="/addrbook/delete/{{id}}" method="get">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+    </tr>
+    </table>
+{% endblock %}
+

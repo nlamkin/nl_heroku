@@ -1,0 +1,62 @@
+{% extends "regTheaterLocator/base.html" %}
+{% block title %}
+
+    {{title}}
+        
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="{% url 'createTheater' %}">
+        <div class="input-field col s12">
+                <label for="place">Name</label>
+                {{form.name}}
+        </div>
+        <div class="row">
+        <div class="card-panel col s3">
+        <h4 class="center-align"> Address </h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="place">Address</label> 
+                {{form.address}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s8">
+                <label for="place">City</label> 
+                {{form.city}}
+            </div>
+            <div class="input-field col s4">
+                <label for="place">State</label> 
+                {{form.state}}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="place">Zip Code</label> 
+                {{form.zip_code}}
+            </div>
+        </div>
+        <div class="row">
+             <div class="input-field col s12">
+             <label for="place">Box Office Phone</label> 
+                {{form.phone}}
+        </div>
+        </div>
+        </div>
+        </div>
+        <button class="btn waves-effect waves-light " type="submit">Save 
+            <i class="mdi-content-save right tiny"></i>
+        </button>
+        {% csrf_token %}
+
+        
+        </form>
+        
+                
+{% endblock %}
+
+{% block scriptss %}
+
+{% endblock %}     

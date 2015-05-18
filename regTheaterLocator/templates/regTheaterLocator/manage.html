@@ -1,0 +1,41 @@
+{% extends "regTheaterLocator/base.html" %}
+{% block title %}
+
+    Theaters You Manage 
+        
+{% endblock %}
+
+{% block content %}
+
+        <div class="row">
+            {% for theater in theaters %}
+                <div class="card-panel col s4">
+                <p> {{theater.name}}<p>
+                    
+                    <button class="btn waves-effect waves-light " type="submit" form="{{theater.id}}">Edit
+                        <i class="mdi-editor-border-color right tiny"></i>
+                    </button>
+                    
+                <form method="GET" action="{% url 'editProfile' theater.id %}" id="{{theater.id}}">
+                    <input type="hidden" name="theater" value="{{theater.name}}">
+                    {% csrf_token %}
+                </form>    
+                </div>
+            {% endfor %}
+            
+        </div>
+        <div class="row">
+        <form method="GET" action="{% url 'createTheater' %}">
+            <button class="btn waves-effect waves-light " type="submit">Add Theater
+                <i class="mdi-action-note-add right tiny"></i>
+            </button>
+
+        </div>
+        {% csrf_token %}
+        </form>
+        
+{% endblock %}
+
+{% block scriptss %}
+
+{% endblock %}     

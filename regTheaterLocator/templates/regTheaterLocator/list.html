@@ -1,0 +1,45 @@
+{% extends "regTheaterLocator/base.html" %}
+{% block title %}
+
+    THE LIST PAGE WORKS
+        
+{% endblock %}
+
+{% block content %}
+        
+        <h2 class="header">Find a show</h2>
+        
+        <div class="row">
+        <h4 class="col s6"> Where? </h4> 
+        <h4 class="col s6"> When? </h4>
+        </div>
+        <form method="get" action="results">
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="place">City</label> 
+                    <input type="text" name="city" value="{{city}}">
+                </div>
+                <div class="input-field col s6">
+                    <label for="date">Date</label> 
+                    <input type="date" class="datepicker" name="date" value="{{date}}">
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">search
+                <i class="mdi-content-send right"></i>
+            </button>
+        </form>
+{% endblock %}
+
+{% block scriptss %}
+    <script>
+    $( document ).ready(function() {
+      
+    $('select').material_select();
+  });
+   $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 2 // Creates a dropdown of 15 years to control year
+  });
+  </script>
+{% endblock %}     
+
